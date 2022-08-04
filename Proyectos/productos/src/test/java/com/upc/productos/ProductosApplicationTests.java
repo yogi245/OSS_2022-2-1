@@ -21,7 +21,7 @@ class ProductosApplicationTests {
 		producto.setDescripcion("Fanta");
 		producto.setPrecio(3);
 		producto.setStock(10);
-		productoNegocio.registrar(producto);
+		productoNegocio.registrar(producto);//
 	}
 
 }
