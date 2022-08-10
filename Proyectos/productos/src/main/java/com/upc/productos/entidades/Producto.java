@@ -12,6 +12,8 @@ public class Producto { // POJO - BEAN - ENTIDAD PERSISTENTE
     private double precio;
     private int stock;
 
+    private transient double precioVenta; //no persiste
+
     public Producto() {
     }
 
@@ -52,5 +54,13 @@ public class Producto { // POJO - BEAN - ENTIDAD PERSISTENTE
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public double getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(double precioVenta) {
+        this.precioVenta = precioVenta;
     }
 }

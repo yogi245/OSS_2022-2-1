@@ -5,6 +5,8 @@ import com.upc.productos.repositorio.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductoNegocio {
    //Inyectando Repositorio
@@ -13,6 +15,23 @@ public class ProductoNegocio {
 
     public Producto registrar(Producto producto){
         return productoRepositorio.save(producto);
+    }
+    public List<Producto> listado(){
+        return productoRepositorio.findAll();
+    }
+    public List<Producto> listadoTotal(){
+        List<Producto> lista;
+        lista = productoRepositorio.findAll();
+        for(Producto producto:lista){
+            producto.setPrecioVenta(calcularPrecioVenta(producto));
+        }
+        return lista;
+    }
+    public List<Producto> listadoxPrecio(double precio){
+        return productoRepositorio.findByPrecioIsLessThan(precio);
+    }
+    public List<Producto> listadoxDescripcion(String prefijo){
+        return productoRepositorio.findByDescripcionStartingWith(prefijo);
     }
     public Producto buscar(Long codigo) throws Exception{
         Producto producto;

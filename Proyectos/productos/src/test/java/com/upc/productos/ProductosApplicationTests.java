@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 class ProductosApplicationTests {
 
@@ -33,6 +35,43 @@ class ProductosApplicationTests {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	@Test
+	void probarListado(){
+		List<Producto> listado;
+		listado = productoNegocio.listado();
+		for(Producto producto:listado){
+			System.out.println(producto.getCodigo()+ "  " + producto.getDescripcion());
+		}
+		Assertions.assertNotNull(listado);
+	}
+	@Test
+	void probarListadoxPrecio(){
+		List<Producto> listado;
+		listado = productoNegocio.listadoxPrecio(10);
+		for(Producto producto:listado){
+			System.out.println(producto.getCodigo()+ "  " + producto.getDescripcion());
+		}
+		Assertions.assertNotNull(listado);
+	}
+	@Test
+	void probarListadoxDescripcion(){
+		List<Producto> listado;
+		listado = productoNegocio.listadoxDescripcion("Lec");
+		for(Producto producto:listado){
+			System.out.println(producto.getCodigo()+ "  " + producto.getDescripcion());
+		}
+		Assertions.assertNotNull(listado);
+	}
+	@Test
+	void probarListadoTotal(){
+		List<Producto> listado;
+		listado = productoNegocio.listadoTotal();
+		for(Producto producto:listado){
+			System.out.println(producto.getCodigo()+ "  " + producto.getDescripcion()
+					+ "   " + producto.getPrecioVenta());
+		}
+		Assertions.assertNotNull(listado);
 	}
 
 }
