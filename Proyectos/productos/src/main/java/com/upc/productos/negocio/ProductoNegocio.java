@@ -58,4 +58,11 @@ public class ProductoNegocio {
         return producto.getPrecio() + calcularIGV(producto) - calcularDescuento(producto);
     }
 
+    public boolean borrar(Long codigo) throws Exception {
+        Producto p;
+        p = buscar(codigo);
+        productoRepositorio.delete(p);
+        return true;
+    }
+
 }
