@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.mockito.Mockito.when;
 
@@ -38,6 +40,24 @@ public class ProductosMockito {
                throw new RuntimeException(e);
           }
      }
+     @Test
+     void obtenerIGVTest(){
+          Producto producto = new Producto(1L,"Leche",4,100);
+          when(productoRepositorio.findById(1L)).thenReturn(Optional.of(producto));
+          Assertions.assertEquals(0.72, productoNegocio.calcularIGV(producto),0.01);
+
+     }
+     @Test
+     void obtenerProductosTest(){
+          when(productoRepositorio.findByDescripcionStartingWith("Lec")).thenReturn(
+                  Stream.of(
+                          new Producto(1L,"Leche", 4,100),
+                          new Producto(2L, "Leche Light", 3,10)).
+                          collect(Collectors.toList())
+          );
+          Assertions.assertEquals(2,productoNegocio.listadoxDescripcion("Lec").size());
+     }
+
 
 
 }
