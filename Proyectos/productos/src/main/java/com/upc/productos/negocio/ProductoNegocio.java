@@ -4,6 +4,7 @@ import com.upc.productos.entidades.Producto;
 import com.upc.productos.repositorio.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class ProductoNegocio {
                 Exception("No se encontró entidad"));
         return producto;
     }
+    @Transactional(rollbackFor = Exception.class)
     public double calcularPrecioVenta(Long codigo) throws Exception{
           Producto producto;
           producto = buscar(codigo);
