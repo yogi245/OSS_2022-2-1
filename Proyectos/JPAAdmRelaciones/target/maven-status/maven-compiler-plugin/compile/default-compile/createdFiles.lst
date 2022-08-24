@@ -1,0 +1,9 @@
+com\upc\curso\entidades\Filtro.class
+com\upc\curso\rest\TiendaRest.class
+com\upc\curso\entidades\Pedido.class
+com\upc\curso\repositorios\PedidoRepositorio.class
+com\upc\curso\negocio\Negocio.class
+com\upc\curso\entidades\Filtro2.class
+com\upc\curso\entidades\Cliente.class
+com\upc\curso\JpaAdmRelacionesApplication.class
+com\upc\curso\repositorios\ClienteRepositorio.class
