@@ -7,6 +7,8 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SearchProductComponent } from './search-product/search-product.component';
+import { HomeProductComponent } from './home-product/home-product.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { SearchProductComponent } from './search-product/search-product.componen
     CreateProductComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    SearchProductComponent
+    SearchProductComponent,
+    HomeProductComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
