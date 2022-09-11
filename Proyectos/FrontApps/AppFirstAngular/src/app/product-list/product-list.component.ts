@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
 
   reloadData(){
     console.log("Reload!");
-    this.productService.getProductList().subscribe(products => this.products);
+    this.productService.getProductList().subscribe(products => this.products = products);
   }
 
 }
