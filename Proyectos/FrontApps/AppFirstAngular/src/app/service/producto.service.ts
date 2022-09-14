@@ -18,4 +18,7 @@ export class ProductoService {
     return this.http.get(this.urlBase + '/productosVentas').
                          pipe(map(response => response as Product[]));
   }
+  createProduct(product: Object) : Observable<Object>{
+    return this.http.post(this.urlBase+'/producto', product, {headers: this.httpHeaders});
+  }
 }
