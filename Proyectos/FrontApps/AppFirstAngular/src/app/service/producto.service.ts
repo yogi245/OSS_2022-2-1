@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http' // importar a mano
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { Product } from '../model/product';
 
 @Injectable({
@@ -16,9 +16,19 @@ export class ProductoService {
   getProductList() : Observable<any> {
     console.log("Llamando a REST:" + this.urlBase + "/productosVentas");
     return this.http.get(this.urlBase + '/productosVentas').
-                         pipe(map(response => response as Product[]));
+                         pipe(map(response => response as Product[]),
+                         catchError(e => {
+                           alert(e.status+ ":" + e.error.message)
+                           return throwError(() => {
+                             const error: any = new Error(e.error.message);
+                             error.timestamp = Date.now();
+                             return error;
+                            });
+                        })
+                    );
   }
   createProduct(product: Object) : Observable<Object>{
     return this.http.post(this.urlBase+'/producto', product, {headers: this.httpHeaders});
   }
+
 }

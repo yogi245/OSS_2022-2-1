@@ -11,6 +11,8 @@ import { HomeProductComponent } from './home-product/home-product.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ProductListMaterialComponent } from './product-list-material/product-list-material.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { FormsModule } from '@angular/forms';
     ProductDetailsComponent,
     SearchProductComponent,
     HomeProductComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProductListMaterialComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
